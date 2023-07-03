@@ -50,7 +50,7 @@ export const FONTS = {
     h1: { fontFamily: "Inter-Bold", fontSize: SIZES.h1, lineHeight: 36 },
     
     h2: { fontFamily: "Inter-Bold", fontSize: SIZES.h2, lineHeight: 30 },
-    h2SemiBold: { fontFamily: "Inter-Bold", fontSize: SIZES.h2, lineHeight: 30 },
+    h2SemiBold: { fontFamily: "Inter-SemiBold", fontSize: SIZES.h2, lineHeight: 30 },
     
     h3: { fontFamily: "Inter-SemiBold", fontSize: SIZES.h3, lineHeight: 22 },
     h3Bold: { fontFamily: "Inter-Bold", fontSize: SIZES.h3, lineHeight: 22 },
