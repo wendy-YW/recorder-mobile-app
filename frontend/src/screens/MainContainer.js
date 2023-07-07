@@ -5,7 +5,7 @@ import { View, Animated } from 'react-native';
 import icons from '../../../constants/icons';
 
 // Screens
-import CalendarScreen from './CalendarScreen';
+import ChartScreen from './ChartScreen';
 import HomeScreen from './HomeScreen';
 import InventoryScreen from './InventoryScreen';
 
@@ -65,7 +65,7 @@ function MainContainer() {
                     tabBarShowLabel: false,
                 })}
             >
-                <Tab.Screen name={calendarName} component={CalendarScreen} options={{ headerShown: false }} />
+                <Tab.Screen name={calendarName} component={ChartScreen} options={{ headerShown: false }} />
                 <Tab.Screen name={homeName} component={HomeScreen} options={{ headerShown: false }} />
                 <Tab.Screen name={inventoryName} component={InventoryScreen} options={{ headerShown: false }} />
             </Tab.Navigator>

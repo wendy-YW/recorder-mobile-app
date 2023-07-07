@@ -38,7 +38,6 @@ const ProjectCalendar = () => {
     const [selectedDate, setSelectedDate] = useState(today);
 
 
-    // Mocked project data. Replace with your own data fetching logic
     const projects = [
         {
             id: 1,
@@ -94,7 +93,7 @@ const ProjectCalendar = () => {
                 { name: 'Bolts', quantity: 12 },
             ]
         },
-        // Add more projects as needed
+
     ];
 
     // Filter projects based on selected date
@@ -151,7 +150,7 @@ const styles = StyleSheet.create({
     },
     imageBackground: {
         flex: 1,
-        resizeMode: 'cover', // or 'stretch'
+        resizeMode: 'cover',
     },
     container: {
         flex: 1,
@@ -166,7 +165,7 @@ const styles = StyleSheet.create({
     },
     calendarCard: {
         flex: 1,
-        marginTop: 50, // Same as marginBottom in header
+        marginTop: 50,
         backgroundColor: '#f0f0f0',
         borderTopLeftRadius: 35,
         borderTopRightRadius: 35,
@@ -184,13 +183,13 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         marginTop: 20,
         width: '90%',
-        minHeight: 150, // Set a minimum height
+        minHeight: 150,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 1 },
         shadowOpacity: 0.8,
         shadowRadius: 2,
         elevation: 5,
-        alignSelf: 'center' // This centers the card within its parent
+        alignSelf: 'center'
     },
     sideColor: {
         width: '30%',
@@ -221,11 +220,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        width: '90%', // Limit the width
-        paddingRight: 10, // Add some padding on the right
+        width: '90%',
+        paddingRight: 10,
     },
     timeContainer: {
-        alignItems: 'center', // This centers the contents horizontally
+        alignItems: 'center',
     },
     projectTime: {
         fontSize: 16,
@@ -235,8 +234,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        width: '90%', // Limit the width
-        paddingRight: 10, // Add some padding on the right
+        width: '90%',
+        paddingRight: 10,
     },
     material: {
         fontSize: 16,
