@@ -9,7 +9,7 @@ const screenWidth = Dimensions.get("window").width;
 const projects = [
 	{
 		id: 1,
-		name: "Project AI",
+		name: "Project A",
 		date: "2023-07-03",
 		description: "Constructing a new residential building.",
 		participants: ["User1", "User2"],
