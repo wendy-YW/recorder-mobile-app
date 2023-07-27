@@ -6,6 +6,66 @@ import appTheme, { COLORS, FONTS } from "../../../constants/theme";
 import { PieChart } from "react-native-chart-kit";
 import { Dimensions } from "react-native";
 const screenWidth = Dimensions.get("window").width;
+
+const chartColors = [
+	"#FF0000",
+	"#00FF00",
+	"#0000FF",
+	"#FFA500",
+	"#FF00FF",
+	"#00FFFF",
+	"#FF4500",
+	"#8A2BE2",
+	"#FF1493",
+	"#00CED1",
+	"#FFD700",
+	"#32CD32",
+	"#FF69B4",
+	"#00FF7F",
+	"#1E90FF",
+	"#FF6347",
+	"#7B68EE",
+	"#FF8C00",
+	"#20B2AA",
+	"#FF7F50",
+	"#9400D3",
+	"#ADFF2F",
+	"#FFC0CB",
+	"#FF8C69",
+	"#BA55D3",
+	"#FFE4E1",
+	"#FFC3A0",
+	"#E6E6FA",
+	"#FFDAB9",
+	"#FFFFE0",
+	"#B0E0E6",
+	"#FFC1C1",
+	"#DDA0DD",
+	"#F0E68C",
+	"#D2B48C",
+	"#FF69B4",
+	"#FF7F50",
+	"#FFD700",
+	"#FFC0CB",
+	"#FF4500",
+	"#32CD32",
+	"#BA55D3",
+	"#FFC3A0",
+	"#ADFF2F",
+	"#E6E6FA",
+	"#FFDAB9",
+	"#FF6347",
+	"#FFA500",
+	"#9400D3",
+	"#7B68EE",
+	"#00FF7F",
+	"#1E90FF",
+	"#FF1493",
+	"#00CED1",
+	"#8A2BE2",
+	"#FF0000",
+];
+
 const projects = [
 	{
 		id: 1,
@@ -132,11 +192,6 @@ const RatingComponent = ({ projectName, hours, minutes, MAXHOUR }) => {
 	);
 };
 
-const getRandomColor = () => {
-	// Return a random color code
-	return "#" + ((Math.random() * 0xffffff) << 0).toString(16).padStart(6, "0");
-};
-
 const ReportTimeScreen = () => {
 	const dropdownValue = projects.map((p) => ({
 		label: p.name,
@@ -168,14 +223,15 @@ const ReportTimeScreen = () => {
 	const [items, setItems] = useState(dropdownValue);
 
 	const selectedProject = value == null ? projects[0] : projects[value - 1];
-	const chartData = selectedProject?.materials?.map((material) => ({
+	const sortedMat = selectedProject?.materials?.sort((a, b) => b.quantity - a.quantity);
+	const chartData = sortedMat.map((material, index) => ({
 		name: material.name,
 		quantity: material.quantity,
-		color: getRandomColor(), // You can use a function to generate random colors
+		color: chartColors[index], // You can use a function to generate random colors
 		legendFontColor: "#000",
 		legendFontSize: 12,
 	}));
-
+	// chartData.sort((a, b) => b.quantity - a.quantity);
 	// console.log(chartData);
 	// console.log(value);
 	// console.log(selectedProject);
