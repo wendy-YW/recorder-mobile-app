@@ -14,5 +14,5 @@ version: 0.1.0
 - Inventory Page:
   - add items&projects page&views
 
-#### Contributor:
+#### Engaged Member:
 - @wendy_YW
