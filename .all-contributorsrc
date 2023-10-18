@@ -1,4 +1,21 @@
 {
   "projectName": "recorder-mobile-app",
-  "projectOwner": "wendy-YW"
+  "projectOwner": "wendy-YW",
+  "files": [
+    "README.md"
+  ],
+  "commitType": "docs",
+  "commitConvention": "angular",
+  "contributorsPerLine": 7,
+  "contributors": [
+    {
+      "login": "Jayden121102",
+      "name": "Jayden121102",
+      "avatar_url": "https://avatars.githubusercontent.com/u/137092085?v=4",
+      "profile": "https://github.com/Jayden121102",
+      "contributions": [
+        "code"
+      ]
+    }
+  ]
 }
