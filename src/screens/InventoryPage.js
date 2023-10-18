@@ -14,7 +14,10 @@ const InventoryPage = () => {
     navigation.navigate('Settings'); // Navigate to the 'Settings' screen
   };
   const handleProjectsPress = () => {
-    navigation.navigate('ProjectsItems'); // Navigate to the 'Settings' screen
+    navigation.navigate('ProjectsItems',{ functionName: 'project' }); // Navigate to the 'Settings' screen
+  };
+  const handleItemsPress = () => {
+    navigation.navigate('ProjectsItems', { functionName: 'item' }); // Navigate to the 'Settings' screen
   };
 
     const inventoryHeader = () => {
@@ -26,7 +29,7 @@ const InventoryPage = () => {
                      <StatusBar translucent backgroundColor={COLORS.lightGreen} 
                      barStyle="light-content"/>
 			<ImageBackground source={require("../assets/images/Inventory-bg.png")} 
-                style={[styles.backgroundImage, { marginTop: +statusBarHeight}]}>
+                style={[styles.backgroundImage, { marginTop: +statusBarHeight*0.5}]}>
                      <View style={styles.hearderContainer}>
 					<Text style={styles.header}>Welcome</Text>
                     <Text style={styles.subHeader}>Start to manage your projects</Text>
@@ -37,6 +40,8 @@ const InventoryPage = () => {
 							height: "25%",
 							paddingLeft: "10%",
 							paddingTop: "5%",
+              marginTop: "5%",
+              paddingBottom: "2%",
 							zIndex: 999,
 						}}
 					>
@@ -44,6 +49,51 @@ const InventoryPage = () => {
                             alignContent:'center',
                             marginLeft:'5%',
                             }}>
+                        <Chip 
+                        icon={({ size, color, direction }) => (
+                            <Image
+                              source={require('../assets/icons/briefcase_bold2.png')}
+                              style={[
+                                {
+                                  transform: [{ scaleX: direction === 'rtl' ? -1 : 1 }],
+                                },
+                                {
+                                  width: 25,
+                                  height: 25,
+                                  tintColor: COLORS.secondary,
+                                  marginLeft:'20%',
+                                }
+                              ]}
+                            />
+                          )}
+                        closeIcon="close"
+                        mode='outlined'
+                        rippleColor={COLORS.lightGreen}
+                        textStyle={{color:COLORS.primary,
+                                    ...FONTS.h4,
+                                    fontSize:15,
+                                    marginLeft:'-2%'}}
+                        style={{backgroundColor:COLORS.white,
+                                borderColor:COLORS.lightGray,
+                                borderWidth:3,
+                                borderRadius:20,
+                                paddingTop:'3%',
+                                shadowColor:COLORS.primary,
+                                shadowOpacity:0.8,
+                                shadowRadius:3.85,
+                                shadowOffset:{
+                                    height:1,
+                                    width:1
+                                },
+                                elevation:1,
+                                width: '80%',
+                                height: '80%',
+                                color:COLORS.primary,
+                                marginTop:'20%',
+                            }}
+                        onPress={handleItemsPress}>
+                        Your Items
+                        </Chip>
                         <Chip 
                         icon={({ size, color, direction }) => (
                             <Image
@@ -72,49 +122,7 @@ const InventoryPage = () => {
                                 borderColor:COLORS.lightGray,
                                 borderWidth:3,
                                 borderRadius:20,
-                                shadowColor:COLORS.primary,
-                                shadowOpacity:0.8,
-                                shadowRadius:3.85,
-                                shadowOffset:{
-                                    height:1,
-                                    width:1
-                                },
-                                elevation:1,
-                                width: '80%',
-                                height: '80%',
-                                marginTop:'20%',
-                                color:COLORS.primary
-                            }}
-                        onPress={handleProjectsPress}>
-                        Your Projects</Chip>
-                        <Chip 
-                        icon={({ size, color, direction }) => (
-                            <Image
-                              source={require('../assets/icons/briefcase_bold2.png')}
-                              style={[
-                                {
-                                  transform: [{ scaleX: direction === 'rtl' ? -1 : 1 }],
-                                },
-                                {
-                                  width: 25,
-                                  height: 25,
-                                  tintColor: COLORS.secondary,
-                                  marginLeft:'20%'
-                                }
-                              ]}
-                            />
-                          )}
-                        closeIcon="close"
-                        mode='outlined'
-                        rippleColor={COLORS.lightGreen}
-                        textStyle={{color:COLORS.primary,
-                                    ...FONTS.h4,
-                                    fontSize:15,
-                                    marginLeft:'-2%'}}
-                        style={{backgroundColor:COLORS.white,
-                                borderColor:COLORS.lightGray,
-                                borderWidth:3,
-                                borderRadius:20,
+                                paddingTop:'3%',
                                 shadowColor:COLORS.primary,
                                 shadowOpacity:0.8,
                                 shadowRadius:3.85,
@@ -126,10 +134,10 @@ const InventoryPage = () => {
                                 width: '80%',
                                 height: '80%',
                                 color:COLORS.primary,
-                                marginTop:'5%'
+                                marginTop:'5%',
                             }}
-                        onPress={() => console.log('Pressed')}>
-                        Your Items
+                        onPress={handleProjectsPress}>
+                        Your Projects
                         </Chip>
                         <Chip 
                         icon={({ size, color, direction }) => (
@@ -159,6 +167,7 @@ const InventoryPage = () => {
                                 borderColor:COLORS.lightGray,
                                 borderWidth:3,
                                 borderRadius:20,
+                                paddingTop:'3%',
                                 shadowColor:COLORS.primary,
                                 shadowOpacity:0.8,
                                 shadowRadius:3.85,

@@ -252,7 +252,7 @@ const ReportTimeScreen = () => {
 		<View style={styles.container}>
             <StatusBar translucent backgroundColor={COLORS.lightGreen} barStyle="light-content"/>
 			<ImageBackground source={require("../assets/images/home-bg.png")} 
-             style={[styles.backgroundImage, { marginTop: +statusBarHeight}]}>
+             style={[styles.backgroundImage, { marginTop:+statusBarHeight*0.5}]}>
                 <View style={styles.hearderContainer}>
 					<Text style={styles.header}>Overview Analysis</Text>
 				</View>
@@ -307,7 +307,12 @@ const ReportTimeScreen = () => {
 							<View>
 								{!isDetail ? (
 									<Text style={{ color: COLORS.secondary, fontWeight: "bold" }}>
-										{projects.length} <Text style={{ color: COLORS.primary, fontWeight: "bold" }}>Project</Text>
+										{projects.length}{' '}
+										{projects.length > 1 ? (
+											<Text style={{ color: COLORS.primary, fontWeight: "bold" }}>Projects</Text>
+										) : (
+											<Text style={{ color: COLORS.primary, fontWeight: "bold" }}>Project</Text>
+										)}
 									</Text>
 								) : (
 									<Text style={{ color: COLORS.secondary, fontWeight: "bold" }}>{selectedProject.date}</Text>

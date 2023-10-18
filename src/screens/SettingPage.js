@@ -55,7 +55,7 @@ const SettingPage = ({}) => {
            <List.Item
              title="Version"
              titleStyle={styles.listItem}
-             description="1.0.0"
+             description="0.1.0"
              left={() => 
              <List.Icon 
               icon="information"

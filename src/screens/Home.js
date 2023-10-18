@@ -491,7 +491,7 @@ const Home = () => {
                 {/* Part of ProjectCalendar */}
                 <View style={styles.container}>
                 <ImageBackground source={require("../assets/images/home-bg.png")} 
-                 style={[styles.backgroundImage, { marginTop: +statusBarHeight}]}>
+                 style={[styles.backgroundImage, { marginTop: +statusBarHeight*0.5}]}>
                          <Text style={styles.header}>My Records</Text>
                         <Text style={styles.subHeader}>Curate Every Record</Text>
                         <Text style={styles.subHeader}>Ever Recorded</Text>

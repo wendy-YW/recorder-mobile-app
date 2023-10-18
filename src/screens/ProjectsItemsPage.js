@@ -3,13 +3,28 @@ import {View, StyleSheet, Dimensions,ListRenderItem,Text } from 'react-native';
 import { COLORS, FONTS } from '../constants/theme';
 // import {SceneMap} from 'react-native-tab-view';
 // import {HScrollView} from 'react-native-header-tab-view';
-import { Tabs } from 'react-native-collapsible-tab-view'
+
 import { useNavigation } from '@react-navigation/native';
 
-import {Appbar} from 'react-native-paper';
+import {
+  Appbar,
+  Button,
+  Title,
+  Paragraph,
+} from 'react-native-paper';
+import {
+  Tabs,
+  TabScreen,
+  useTabIndex,
+  useTabNavigation,
+  TabsProvider,
+} from 'react-native-paper-tabs';
 
 
-const ProjectsItemsPage = ({}) => {
+const ProjectsItemsPage = ({route}) => {
+  const { functionName } = route.params;
+  const TabIndex = functionName === 'project' ? 1 : 0;
+  // console.log(functionName);
 
 const initialLayout = {width: Dimensions.get('window').width};
 
@@ -34,50 +49,100 @@ const ProjectsItemsAppBarView = () => {
     );
 };
 
+const handleChangeIndex = (index) => console.log(index);
 
-// const HEADER_HEIGHT = 250
-const DATA = [0, 1, 2, 3, 4]
-const identity = (v) => v.toString();
-
-const Header = () => {
-  return (
-
-  <View style={styles.header}>
-     {/* <Tabs.Bar style={{backgroundColor:COLORS.lightGreen}} /> */}
-  </View>
-  );
-}
 
 const ProjectsItemsTabView = () => {
-  const renderItem = React.useCallback(({ index }) => {
-    return (
-      <View style={[styles.box, index % 2 === 0 ? styles.boxB : styles.boxA]} />
-    )
-  }, [])
-
+  
   return (
-    <Tabs.Container
-      renderHeader={Header}
-    //   headerHeight={HEADER_HEIGHT} // optional
+    <TabsProvider
+      defaultIndex={TabIndex} // default = 0
+      // onChangeIndex={handleChangeIndex} //optional
     >
-      <Tabs.Tab 
-        name="PROJECT"
+      <Tabs
+        // uppercase={false} // true/false | default=true (on material v2) | labels are uppercase
+        // showTextLabel={false} // true/false | default=false (KEEP PROVIDING LABEL WE USE IT AS KEY INTERNALLY + SCREEN READERS)
+        // iconPosition // leading, top | default=leading
+        iconPosition='top'
+          style={{ backgroundColor:
+                  COLORS.white,
+                }} // works the same as AppBar in react-native-paper
+        // dark={false} // works the same as AppBar in react-native-paper
+        // theme={} // works the same as AppBar in react-native-paper
+        theme={{
+          colors: {primary: COLORS.primary},
+        }} 
+        // mode="scrollable" // fixed, scrollable | default=fixed
+        // showLeadingSpace={true} //  (default=true) show leading space in scrollable tabs inside the header
+        //disableSwipe={false} // (default=false) disable swipe to left/right gestures
+      >
+        <TabScreen label="Items" icon="archive-edit-outline">
+           <InventoryView />
+        </TabScreen>
+        <TabScreen
+          label="Projects"
+          icon="folder-plus-outline"
+          // optional props
+          // badge={true} // only show indicator
+          // badge="text"
+          // badge={1}
+          // onPressIn={() => {
+          //   console.log('onPressIn explore');
+          // }}
+          // onPress={() => {
+          //   console.log('onPress explore');
+          // }}
         >
-        <Tabs.FlatList
-          data={DATA}
-          renderItem={renderItem}
-          keyExtractor={identity}
-        />
-      </Tabs.Tab>
-      <Tabs.Tab name="ITEM">
-        <Tabs.ScrollView>
-          <View style={[styles.box, styles.boxB]} />
-        </Tabs.ScrollView>
-      </Tabs.Tab>
-    </Tabs.Container>
+           <ProjectView  />
+           {/* <InventoryView /> */}
+        </TabScreen>
+        <TabScreen label="Customers" icon="account-edit" disabled>
+          <View style={{ backgroundColor: 'black', flex:1 }} />
+        </TabScreen>
+      </Tabs>
+    </TabsProvider>
   )
 }
 
+function InventoryView() {
+  const goTo = useTabNavigation();
+  const index = useTabIndex();
+  return (
+    <View style={{ 
+      flex:1,
+      backgroundColor:COLORS.lightGray,
+    }}>
+      {/* <Title>TODO</Title>
+      <Paragraph>TODO</Paragraph> */}
+      <Title></Title>
+      <Paragraph></Paragraph>
+      <Button
+      onPress={() => goTo(1)}
+      textColor= {COLORS.secondary}
+      >Go to Projects</Button>
+    </View>
+  );
+  }
+
+  function ProjectView() {
+    const goTo = useTabNavigation();
+    const index = useTabIndex();
+    return (
+      <View style={{ 
+        flex:1,
+        backgroundColor:COLORS.lightGray,
+      }}>
+        {/* <Title>TODO</Title>
+        <Paragraph>TODO</Paragraph> */}
+        <Title></Title>
+        <Paragraph></Paragraph>
+        <Button
+        onPress={() => goTo(0)}
+        textColor= {COLORS.secondary}
+        >Go to Items</Button>
+      </View>
+    );
+}
 
 
 return (
@@ -95,6 +160,8 @@ const styles = StyleSheet.create({
   },
   navBar:{    
     backgroundColor: COLORS.white,
+    borderBottomColor: COLORS.gray + '90',
+    borderBottomWidth: 1,
     shadowColor: COLORS.primary,
     shadowOffset: {
       width: 2,
@@ -105,21 +172,6 @@ const styles = StyleSheet.create({
     elevation: 3,
 },
 
-box: {
-    height: 300,
-    width: '100%',
-  },
-  boxA: {
-    backgroundColor: COLORS.white,
-  },
-  boxB: {
-    backgroundColor: COLORS.white,
-  },
-  header: {
-    height: 120,
-    width: '100%',
-    backgroundColor: COLORS.lightGray,
-  },
 });
 
 export default ProjectsItemsPage;
