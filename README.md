@@ -15,4 +15,4 @@ version: 0.1.0
   - add items&projects page&views
 
 #### Engaged Member:
-- @wendy_YW
+- @wendy-YW
