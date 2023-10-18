@@ -165,7 +165,7 @@ const projects = [
 		name: "Project D",
 		date: "2023-07-06",
 		description: "Renovating a restaurant space.",
-		participants: ["User5", "User6"],
+		participants: ["User5", "User6","User5", "User6"],
 		hours: 22,
 		minutes: 31,
 		materials: [
@@ -262,9 +262,15 @@ const ReportTimeScreen = () => {
 							height: "25%",
 							paddingLeft: "10%",
 							paddingTop: "5%",
-							zIndex: 999,
+							flexDirection: "column",
+							zIndex: 1,
 						}}
 					>
+						<View	
+							style={{
+								zIndex: 999,
+							}}
+							>
 						<DropDownPicker
 							placeholder="Select Project"
 							open={open}
@@ -281,12 +287,14 @@ const ReportTimeScreen = () => {
                                 ...FONTS.h2,
 								// fontWeight: "bold",
                                 color: COLORS.primary,
+								zIndex: 9999,
 							}}
 							dropDownContainerStyle={{
 								backgroundColor: COLORS.lightGray,
 								borderWidth: 0,
 								width: "70%",
 								fontSize: 20,
+								zIndex: 9999,
 							}}
 							style={{
 								width: "70%",
@@ -300,7 +308,10 @@ const ReportTimeScreen = () => {
 								borderTopRightRadius: 0,
 							}}
 						/>
-						{isDetail && <Text style={styles.description}>{selectedProject.description}</Text>}
+						</View>
+					{isDetail && <Text 
+									style={styles.description}>
+										{selectedProject.description}</Text>}
 					</View>
 					<View style={styles.DetailCard}>
 						<View style={{ flexDirection: "row", height: "20%", alignItems: "center", justifyContent: "space-between", paddingHorizontal: "10%" }}>
@@ -460,6 +471,8 @@ const styles = StyleSheet.create({
 	},
 	scrollViewContent: {
 		paddingHorizontal: "10%",
+    	height: '120%',
+    	width: '100%',
 	},
 });
 
