@@ -1,3 +1,4 @@
+import { DATA_API_KEY } from '@env';
 import * as React from 'react';
 import { Modal, Portal, Text, Button, PaperProvider, Tooltip, Appbar } from 'react-native-paper';
 import { useEffect, useState } from 'react';
@@ -152,17 +153,62 @@ const RecordFormPage = () => {
   useEffect(() => {
     fetchProjects();
     fetchItems();
+
+  //   //test 
+  //  const fetchData = async () => {
+  //   try {
+  //     const fetchedItems = await fetchItems();
+  //     console.log(typeof fetchedItems);
+  //   } catch (error) {
+  //     console.error('Error fetching data:', error);
+  //   }
+  // };
+
+  // fetchData();
+  
   }, []);
 
+
+  
+  
   const fetchProjects = async () => {
-    try {
-      const response = await axios.get('http://10.0.2.2:3000/api/projects');
-      setProjects(response.data); // Set the fetched projects
-      return response.data; // Return the fetched projects data
-    } catch (error) {
-      console.error('Error fetching projects:', error);
-      throw error; // Re-throw the error to handle it later
-    }
+    const data = JSON.stringify({
+      "collection": "projects",
+      "database": "test",
+      "dataSource": "Cluster0",
+      //   "filter": {  }
+    });
+
+    var config = {
+      method: 'post',
+      url: 'https://eu-central-1.aws.data.mongodb-api.com/app/data-hzrch/endpoint/data/v1/action/findOne',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Request-Headers': '*',
+        'api-key': DATA_API_KEY,
+        'Accept':'application/json'
+      },
+      data: data
+  };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        setItems(JSON.stringify(response.data)); // Set the fetched items
+        return JSON.stringify(response.data); // Return the fetched items data
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+
+    // try {
+    //   const response = await axios.get('http://10.0.2.2:3000/api/projects');
+    //   setProjects(response.data); // Set the fetched projects
+    //   return response.data; // Return the fetched projects data
+    // } catch (error) {
+    //   console.error('Error fetching projects:', error);
+    //   // throw error; // Re-throw the error to handle it later
+    // }
   };
 
   const handleSelect = (selectedItem) => {
@@ -171,15 +217,51 @@ const RecordFormPage = () => {
   const [itemOpen, setItemOpen] = useState('');
   const [items, setItems] = useState([]);
 
+  // tem comment
   const fetchItems = async () => {
-    try {
-      const response = await axios.get('http://10.0.2.2:3000/api/items');
-      setItems(response.data); // Set the fetched items
-      return response.data; // Return the fetched items data
-    } catch (error) {
-      console.error('Error fetching items:', error);
-      throw error; // Re-throw the error to handle it later
+    const data = JSON.stringify({
+      "collection": "items",
+      "database": "test",
+      "dataSource": "Cluster0",
+      //   "filter": {  }
+    });
+
+    var config = {
+      method: 'post',
+      url: 'https://eu-central-1.aws.data.mongodb-api.com/app/data-hzrch/endpoint/data/v1/action/findOne',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Request-Headers': '*',
+        'api-key': DATA_API_KEY,
+        'Accept':'application/json'
+      },
+      data: data
+  };
+
+  try {
+    const response = await axios(config);
+    if (response && response.data && response.data.document) {
+      console.log("Items Data"+ JSON.stringify(response.data));
+      setItems(JSON.stringify(response.data)); // Set the fetched items
+      const testItems = JSON.stringify(response.data);  
+      return testItems; // Return the fetched items data
+    } else {
+      console.error('Invalid response format:', response);
+      throw new Error('Invalid response format');
     }
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    throw error; // rethrow the error to be caught by the caller
+  }
+
+    // try {
+    //   const response = await axios.get('http://10.0.2.2:3000/api/items');
+    //   setItems(response.data); // Set the fetched items
+    //   return response.data; // Return the fetched items data
+    // } catch (error) {
+    //   console.error('Error fetching items:', error);
+    //   // throw error; // Re-throw the error to handle it later
+    // }
   };
 
 
@@ -236,7 +318,7 @@ const RecordFormPage = () => {
       return response.data; // Return the fetched project records data
     } catch (error) {
       console.error('Error fetching project records:', error);
-      throw error; // Re-throw the error to handle it later
+      // throw error; // Re-throw the error to handle it later
     }
   };
 
@@ -246,12 +328,12 @@ const RecordFormPage = () => {
       // Fetch the list of items and projects
       const fetchedItems = await fetchItems();
       const fetchedProjects = await fetchProjects();
-      const fetchedProjectRecords = await fetchProjectRecords();
+      // const fetchedProjectRecords = await fetchProjectRecords();
 
       // Find the selected item and project based on their names
       const selectedItem = fetchedItems.find(item => item.name === selectedItemName);
       const selectedProject = fetchedProjects.find(project => project.name === selectedProjectName);
-      const selectedProjectRecord = fetchedProjectRecords.find(record => record.project.toString() === selectedProject._id.toString());
+      // const selectedProjectRecord = fetchedProjectRecords.find(record => record.project.toString() === selectedProject._id.toString());
 
       console.log("RECORD: ", selectedProjectRecord);
       if (!selectedItem) {
@@ -268,18 +350,36 @@ const RecordFormPage = () => {
       const [hours, minutes] = timeString.split(':');
       const totalMinutes = parseInt(hours, 10) * 60 + parseInt(minutes, 10);
 
-      // Create the data object for the project record
-      const data = {
-        timeWorked: totalMinutes,
-        items: itemList.map(item => {
-          const [itemNameWithDots, itemQuantity] = item.split(' ');
 
-          return {
-            item: selectedItem._id,
-            quantity: parseInt(itemQuantity, 10),
-          };
-        }),
-      };
+
+      const data = JSON.stringify({
+        "collection": "projectrecords",
+        "database": "test",
+        "dataSource": "Cluster0",
+        "document":{
+            "timeWorked": totalMinutes,
+            "items": itemList.map(item => {
+              const [itemNameWithDots, itemQuantity] = item.split(' ');
+              return {
+                "item": selectedItem._id,
+                "quantity": parseInt(itemQuantity, 10),
+              };
+            }),
+          }
+      });
+
+      // Create the data object for the project record
+      // const data = {
+      //   timeWorked: totalMinutes,
+      //   items: itemList.map(item => {
+      //     const [itemNameWithDots, itemQuantity] = item.split(' ');
+
+      //     return {
+      //       item: selectedItem._id,
+      //       quantity: parseInt(itemQuantity, 10),
+      //     };
+      //   }),
+      // };
 
       console.log("Projekti: ", selectedProject);
       console.log("ID: ", selectedProject._id);
@@ -290,6 +390,7 @@ const RecordFormPage = () => {
         data.projectId = selectedProjectRecord._id;
         data.workedHours = totalMinutes;  // Add worked hours for update
 
+        //TODO update project record
         axios.post('http://10.0.2.2:3000/api/projectRecords/updateProjectRecord', data)
           .then(response => {
             console.log('Success:', response.data);
@@ -301,19 +402,39 @@ const RecordFormPage = () => {
         // Create a new project record
         data.project = selectedProject._id;
 
-        axios.post('http://10.0.2.2:3000/api/projectRecords/create', data)
-          .then(response => {
-            console.log('Success:', response.data);
-          })
-          .catch(error => {
-            console.error('Error:', error);
-          });
+        var config = {
+          method: 'post',
+          url: 'https://eu-central-1.aws.data.mongodb-api.com/app/data-hzrch/endpoint/data/v1/action/insertOne',
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Request-Headers': '*',
+            'api-key': DATA_API_KEY,
+          },
+          data: data
+      };
+        axios(config)
+          .then(function (response) {
+            console.log(JSON.stringify(response.data));
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+        // axios.post('http://10.0.2.2:3000/api/projectRecords/create', data)
+        //   .then(response => {
+        //     console.log('Success:', response.data);
+        //   })
+        //   .catch(error => {
+        //     console.error('Error:', error);
+        //   });
       }
     } catch (error) {
       console.error('Error in handleUploadRecordProject:', error);
-    }
-  };
+     }
+   };
 
+
+  //???
   // Create the data object for the project record
   //     const data = {
   //       timeWorked: totalMinutes,
@@ -401,6 +522,7 @@ const RecordFormPage = () => {
 
 
 
+
   function createRecord() {
     return (
       <View style={{ flex: 1, backgroundColor: "transparent", padding: 15, marginLeft: '-3%' }}>
@@ -481,7 +603,7 @@ const RecordFormPage = () => {
         {/* items */}
         <View style={{ paddingTop: '15%', marginLeft: 40, marginRight: 25 }}>
           <View style={{
-            backgroundColor: COLORS.secondary,
+            // backgroundColor: COLORS.secondary,
             borderRadius: 20,
             borderLeftWidth: 10,
             //borderTopWidth:5,
@@ -545,7 +667,7 @@ const RecordFormPage = () => {
                     <SelectList
                       setSelected={(val) => setSelectedItemName(val)}
                       fontFamily='Inter-Light'
-                      data={items.map(item => ({ key: item._id, value: item.name }))} // Transform item data to match SelectList format
+                      // data={items.map(item => ({ key: item._id, value: item.name }))} // Transform item data to match SelectList format
                       save='value'
                       arrowicon={<Icon name="chevron-down" size={12} color={COLORS.primary} />}
                       searchicon={<Icon name="search" size={12} color={COLORS.primary} />}
@@ -617,7 +739,7 @@ const RecordFormPage = () => {
         {/* users */}
         <View style={{ paddingTop: 40, marginLeft: 40, marginRight: 25 }}>
           <View style={{
-            backgroundColor: COLORS.secondary,
+            // backgroundColor: COLORS.secondary,
             borderRadius: 20,
             borderLeftWidth: 10,
             borderEndWidth: 10,
@@ -652,17 +774,42 @@ const RecordFormPage = () => {
                   placeholderTextColor={COLORS.gray}
                   inputStyle={{ color: COLORS.secondary, ...FONTS.body3SemiBold, fontSize: SIZES.h3 }}
                   passiveColor={COLORS.primary}
-                />
-              </View>
-              <View style={{ marginLeft: '82%', paddingTop: '10%', position: 'absolute' }}>
-                <TouchableOpacity>
+                  value={userName}
+                  onChangeText={(text) => {
+                      setUserName(text);
+                      setUserNameError('');
+                  }}
+              />
+              {UserNameError !== '' && <Text style={styles.errorText}>{UserNameError}</Text>}
+          </View>
+          <View style={{ marginLeft: '82%', paddingTop: '10%', position: 'absolute' }}>
+              <TouchableOpacity onPress={handleAddUser}>
                   <Ionicons name="add-circle-outline" size={30} color={COLORS.primary} />
-                </TouchableOpacity>
-              </View>
-              <View style={{ marginLeft: 20, marginRight: 60, paddingTop: 20, paddingBottom: 20 }}>
-                <Text style={{ ...FONTS.body3 }}>For Authentication login?</Text>
-              </View>
-            </AnimatedInvoice>
+              </TouchableOpacity>
+          </View>
+
+          {/* user name list */}
+          <View style={{ marginLeft: 20, marginRight: 60, paddingTop: 20 }}>
+              {userList.length > 0 ? (
+                  userList.map((user, index) => (
+                      (index % 3 === 0) && (
+                          <View key={index} style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+                              {userList.slice(index, index + 3).map((user, subIndex) => (
+                                  <View key={subIndex} style={{ flexDirection: 'row', alignItems: 'center', marginRight: 10, marginBottom: 10 }}>
+                                      <Text>{user}</Text>
+                                      <TouchableOpacity onPress={() => handleDeleteUser(index, subIndex)}>
+                                          <Ionicons name="trash" size={20} color={COLORS.gray} />
+                                      </TouchableOpacity>
+                                  </View>
+                              ))}
+                          </View>
+                      )
+                  ))
+              ) : (
+                  <Text> </Text>  //for customer list to be empty
+              )}
+          </View>
+      </AnimatedInvoice>
           </View>
         </View>
       </View>
@@ -680,7 +827,6 @@ const RecordFormPage = () => {
   const [projectNameInput, handleProjectNameChange, projectNameError, setProjectNameError] = useTextInput('', validateNotEmpty);
   const [projectDescriptionInput, handleProjectDescriptionChange] = useTextInput('');
   const [dateString, handleDateChange, dateStringError, setDateStringError] = useTextInput('', validateDate);
-
 
   //date options
   const dateOptions = {
@@ -707,6 +853,7 @@ const RecordFormPage = () => {
     showMode('date');
   };
 
+
   //sheets
   const [isItemFormVisible, setItemFormVisible] = useState(false);
   const [isProjectFormVisible, setProjectFormVisible] = useState(false);
@@ -732,22 +879,54 @@ const RecordFormPage = () => {
   }, [showItemSuccess]);
 
   const handleUploadItem = () => {
-    const data = {
-      name: itemNameInput,
-      price: itemPriceInput,
-      quantity: itemQuantityInput,
-      info: itemInfoInput
-    };
+
+    const data = JSON.stringify({
+      "collection": "items",
+      "database": "test",
+      "dataSource": "Cluster0",
+      "document":{
+        "name": itemNameInput,
+        "price": itemPriceInput,
+        "quantity": itemQuantityInput,
+        "info": itemInfoInput
+      }
+    });
+
+    var config = {
+      method: 'post',
+      url: 'https://eu-central-1.aws.data.mongodb-api.com/app/data-hzrch/endpoint/data/v1/action/insertOne',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Request-Headers': '*',
+        'api-key': DATA_API_KEY,
+      },
+      data: data
+  };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+
+    // const data = {
+    //   name: itemNameInput,
+    //   price: itemPriceInput,
+    //   quantity: itemQuantityInput,
+    //   info: itemInfoInput
+    // };
 
     console.log('Data:', data);
 
-    axios.post('http://10.0.2.2:3000/api/items/create', data)
-      .then(response => {
-        console.log('Success:', response.data);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
+    // axios.post('http://10.0.2.2:3000/api/items/create', data)
+    //   .then(response => {
+    //     console.log('Success:', response.data);
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error:', error);
+    //   });
   };
 
   const handleItemFormClose = () => {
@@ -802,20 +981,40 @@ const RecordFormPage = () => {
   const handleUploadProject = () => {
     const formattedStartDate = moment(dateString, 'DD/MM/YYYY').format('YYYY-MM-DD');
 
-    const data = {
-      name: projectNameInput,
-      startDate: formattedStartDate,
-      description: projectDescriptionInput,
-      customerName: customerList.join(", ")
-    };
+    const data = JSON.stringify({
+      "collection": "projects",
+      "database": "test",
+      "dataSource": "Cluster0",
+      "document":{
+        "name": projectNameInput,
+        "startDate": formattedStartDate,
+        "description": projectDescriptionInput,
+        "customerName": customerList.join(", ")
+      }
+    });
 
-    axios.post('http://10.0.2.2:3000/api/projects/create', data)
-      .then(response => {
-        console.log('Success:', response.data);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
+    var config = {
+      method: 'post',
+      url: 'https://eu-central-1.aws.data.mongodb-api.com/app/data-hzrch/endpoint/data/v1/action/insertOne',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Request-Headers': '*',
+        'api-key': DATA_API_KEY,
+      },
+      data: data
+  };
+
+
+    // axios.post('http://10.0.2.2:3000/api/projects/create', data)
+    // axios.post('https://eu-central-1.aws.data.mongodb-api.com/app/data-hzrch/endpoint/data/v1/action/findOne', data,
+    // )
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
   };
 
   const handleProjectFormClose = () => {
@@ -865,6 +1064,28 @@ const RecordFormPage = () => {
     updatedList.splice(customerIndex, 1);
     setCustomerList(updatedList);
   };
+
+  //handle user list
+    //handle customer list
+    const [userName, setUserName] = useState('');
+    const [UserNameError, setUserNameError] = useState('');
+    const [userList, setUserList] = useState([]); // State to store the list of users
+  
+    const handleAddUser = () => {
+      if (userName.trim() === '') {
+        setUserNameError('Name cannot be empty');
+        return;
+      }
+      const newUser = userName;
+      setUserList([...userList, newUser]); // Add the new user to the list
+      setUserName(''); // Clear the user name input
+    };
+    const handleDeleteUser = (index, subIndex) => {
+      const updatedList = [...userList];
+      const userIndex = index + subIndex;
+      updatedList.splice(userIndex, 1);
+      setUserList(updatedList);
+    };
 
 
   // confirm status 
@@ -1220,7 +1441,7 @@ const RecordFormPage = () => {
               {/* select customers */}
               <View style={{ paddingTop: 40, marginLeft: 45, marginRight: 50 }}>
                 <View style={{
-                  backgroundColor: COLORS.secondary,
+                  // backgroundColor: COLORS.secondary,
                   borderRadius: 20,
                   borderLeftWidth: 10,
                   borderEndWidth: 10,

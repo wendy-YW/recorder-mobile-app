@@ -4,6 +4,7 @@ console.log(process.env.MONGODB_URI);
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+// const bodyParser = require('body-parser');
 
 const projectsRouter = require('./routes/projects');
 const itemsRouter = require('./routes/items');
@@ -20,7 +21,7 @@ app.use(express.json());
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log('Connected to MongoDB...');
-
+        // mongoose.connection.useDb('recorder');
         // Start the Express server after the database connection is established
         const PORT = process.env.PORT || 3000;
         app.listen(PORT, () => {

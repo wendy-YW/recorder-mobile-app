@@ -140,22 +140,36 @@ const Home = () => {
     }, [showItemSuccess]);
 
     const handleUploadItem = () => {
-        const data = {
-            name: itemNameInput,
-            price: itemPriceInput,
-            quantity: itemQuantityInput,
-            info: itemInfoInput
+        const data = JSON.stringify({
+            "collection": "items",
+            "database": "test",
+            "dataSource": "Cluster0",
+            "document":{
+              "name": itemNameInput,
+              "price": itemPriceInput,
+              "quantity": itemQuantityInput,
+              "info": itemInfoInput
+            }
+          });
+      
+          var config = {
+            method: 'post',
+            url: 'https://eu-central-1.aws.data.mongodb-api.com/app/data-hzrch/endpoint/data/v1/action/insertOne',
+            headers: {
+              'Content-Type': 'application/json',
+              'Access-Control-Request-Headers': '*',
+              'api-key': DATA_API_KEY,
+            },
+            data: data
         };
-
-        console.log('Data:', data);
-
-        axios.post('http://10.0.2.2:3000/api/items/create', data)
-            .then(response => {
-                console.log('Success:', response.data);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
+      
+          axios(config)
+            .then(function (response) {
+              console.log(JSON.stringify(response.data));
+          })
+          .catch(function (error) {
+              console.log(error);
+          });
     };
 
     const handleItemFormClose = () => {
@@ -208,30 +222,40 @@ const Home = () => {
     const handleUploadProject = () => {
         const formattedStartDate = moment(dateString, 'DD/MM/YYYY').format('YYYY-MM-DD');
 
-        const data = {
-            name: projectNameInput,
-            startDate: formattedStartDate,
-            description: projectDescriptionInput,
-            customerName: customerList.join(", ") // Use customerList instead of customerName
-        };
-        // Format the startDate using moment.js
-
-
-        console.log('Data:', data);
-
-        axios.post('http://10.0.2.2:3000/api/projects/create', data)
-            .then(response => {
-                console.log('Success:', response.data);
-                // // Clear form fields after successful post
-                // handleProjectNameChange('');
-                // handleDateChange('');
-                // handleProjectDescriptionChange('');
-                // setCustomerName('');
-
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
+        const data = JSON.stringify({
+          "collection": "projects",
+          "database": "test",
+          "dataSource": "Cluster0",
+          "document":{
+            "name": projectNameInput,
+            "startDate": formattedStartDate,
+            "description": projectDescriptionInput,
+            "customerName": customerList.join(", ")
+          }
+        });
+    
+        var config = {
+          method: 'post',
+          url: 'https://eu-central-1.aws.data.mongodb-api.com/app/data-hzrch/endpoint/data/v1/action/insertOne',
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Request-Headers': '*',
+            'api-key': DATA_API_KEY,
+          },
+          data: data
+      };
+    
+    
+        // axios.post('http://10.0.2.2:3000/api/projects/create', data)
+        // axios.post('https://eu-central-1.aws.data.mongodb-api.com/app/data-hzrch/endpoint/data/v1/action/findOne', data,
+        // )
+        axios(config)
+          .then(function (response) {
+            console.log(JSON.stringify(response.data));
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
     };
 
     const handleProjectFormClose = () => {
@@ -838,7 +862,7 @@ const Home = () => {
                             {/* select customers */}
                             <View style={{ paddingTop: 40, marginLeft: 45, marginRight: 50 }}>
                                 <View style={{
-                                    backgroundColor: COLORS.secondary,
+                                    // backgroundColor: COLORS.secondary,
                                     borderRadius: 20,
                                     borderLeftWidth: 10,
                                     borderEndWidth: 10,
