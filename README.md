@@ -14,6 +14,20 @@ Developing a mobile application to record worked hours and materials for a speci
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
+## 20/10 2023 Update
+
+version: 0.1.1
+
+#### Fixed issues:
+- Data fetch and upload with cloud databases
+
+#### Update feats:
+- Inventory Page:
+  -  update items&projects page&views
+
+#### Engaged members:
+- @wendy_YW
+
 ## 18/10 2023 Update
 
 version: 0.1.0
@@ -27,5 +41,5 @@ version: 0.1.0
 - Inventory Page:
   - add items&projects page&views
 
-#### Contributor:
+#### Engaged members:
 - @wendy_YW
