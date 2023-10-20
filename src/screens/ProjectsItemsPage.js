@@ -19,6 +19,7 @@ import {
   useTabNavigation,
   TabsProvider,
 } from 'react-native-paper-tabs';
+import { Circle } from 'react-native-svg';
 
 
 const ProjectsItemsPage = ({route}) => {
@@ -70,7 +71,12 @@ const ProjectsItemsTabView = () => {
         // dark={false} // works the same as AppBar in react-native-paper
         // theme={} // works the same as AppBar in react-native-paper
         theme={{
-          colors: {primary: COLORS.primary},
+          colors: {
+            primary: COLORS.secondary, 
+            underlineColor: 'transparent',
+            onSurface: COLORS.secondary,
+            onSurfaceVariant: COLORS.primary,
+          },
         }} 
         // mode="scrollable" // fixed, scrollable | default=fixed
         // showLeadingSpace={true} //  (default=true) show leading space in scrollable tabs inside the header
