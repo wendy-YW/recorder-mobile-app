@@ -1,6 +1,6 @@
 # recorder-mobile-app
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Developing a mobile application to record worked hours and materials for a specific project. The aim is to build a useful application for real-life needs in a campus environment, which may also be used outside of the campus in the future.
@@ -16,6 +16,7 @@ Developing a mobile application to record worked hours and materials for a speci
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/wendy-YW"><img src="https://avatars.githubusercontent.com/u/93748904?v=4?s=100" width="100px;" alt="Wendy"/><br /><sub><b>Wendy</b></sub></a><br /><a href="https://github.com/wendy-YW/recorder-mobile-app/commits?author=wendy-YW" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ahvenainen"><img src="https://avatars.githubusercontent.com/u/121426005?v=4?s=100" width="100px;" alt="ahvenainen"/><br /><sub><b>ahvenainen</b></sub></a><br /><a href="https://github.com/wendy-YW/recorder-mobile-app/commits?author=ahvenainen" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Jayden121102"><img src="https://avatars.githubusercontent.com/u/137092085?v=4?s=100" width="100px;" alt="Jayden121102"/><br /><sub><b>Jayden121102</b></sub></a><br /><a href="https://github.com/wendy-YW/recorder-mobile-app/commits?author=Jayden121102" title="Code">💻</a></td>
     </tr>
   </tbody>
   <tfoot>
