@@ -8,6 +8,16 @@
   "commitConvention": "angular",
   "contributorsPerLine": 7,
   "contributors": [
+   {
+      "login": "ahvenainen",
+      "name": "ahvenainen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/121426005?v=4",
+      "profile": "https://github.com/ahvenainen",
+      "contributions": [
+        "code",
+        "ideas"
+      ]
+    },
     {
       "login": "Jayden121102",
       "name": "Jayden121102",
