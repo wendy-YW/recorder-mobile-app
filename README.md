@@ -4,8 +4,8 @@ Developing a mobile application to record worked hours and materials for a speci
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
-![GitHub package.json version (subfolder of monorepo)](https://img.shields.io/github/package-json/v/wendy-YW/recorder-mobile-app)
 <!-- ALL-CONTRIBUTORS-BADGE:END --> 
+![GitHub package.json version (subfolder of monorepo)](https://img.shields.io/github/package-json/v/wendy-YW/recorder-mobile-app)
 
 ## Contributors
 
