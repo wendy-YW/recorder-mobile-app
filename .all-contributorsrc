@@ -8,7 +8,7 @@
   "commitConvention": "angular",
   "contributorsPerLine": 7,
   "contributors": [
-   {
+    {
       "login": "ahvenainen",
       "name": "ahvenainen",
       "avatar_url": "https://avatars.githubusercontent.com/u/121426005?v=4",
@@ -25,6 +25,16 @@
       "profile": "https://github.com/Jayden121102",
       "contributions": [
         "code"
+      ]
+    },
+    {
+      "login": "wendy-YW",
+      "name": "Wendy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/93748904?v=4",
+      "profile": "https://github.com/wendy-YW",
+      "contributions": [
+        "code",
+        "design"
       ]
     }
   ]
