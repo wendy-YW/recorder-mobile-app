@@ -11,6 +11,7 @@ import {
   Button,
   Title,
   Paragraph,
+  List,
 } from 'react-native-paper';
 import {
   Tabs,
@@ -20,6 +21,7 @@ import {
   TabsProvider,
 } from 'react-native-paper-tabs';
 import { Circle } from 'react-native-svg';
+import { color } from 'react-native-reanimated';
 
 
 const ProjectsItemsPage = ({route}) => {
@@ -120,8 +122,7 @@ function InventoryView() {
     }}>
       {/* <Title>TODO</Title>
       <Paragraph>TODO</Paragraph> */}
-      <Title></Title>
-      <Paragraph></Paragraph>
+      {InventoryViewList()}
       <Button
       onPress={() => goTo(1)}
       textColor= {COLORS.secondary}
@@ -129,6 +130,32 @@ function InventoryView() {
     </View>
   );
   }
+
+  const InventoryViewList = () => {
+  return (
+      <View>
+      <List.Item 
+        title="Item 1" 
+        titleStyle={{...FONTS.body3Medium, color: COLORS.primary,marginLeft: '5%',}}
+        description={`Quantity: 1\nPrice: 5\nInfo: info`}
+        descriptionNumberOfLines={3}
+        descriptionStyle={{...FONTS.body4Light, color: COLORS.primary,marginLeft: '10%',}}
+       style={{backgroundColor: COLORS.white}}
+        right={props => <List.Icon icon="pencil" color={COLORS.lightGreen}/>}
+      />
+      <List.Item 
+        title="Item 2" 
+        titleStyle={{...FONTS.body3Medium, color: COLORS.primary,marginLeft: '5%',}}
+        description={`Quantity: 2\nPrice: 5\nInfo: info`}
+        descriptionNumberOfLines={3}
+        descriptionStyle={{...FONTS.body4Light, color: COLORS.primary,marginLeft: '10%',}}
+        style={{backgroundColor: COLORS.white}}
+        right={props => <List.Icon icon="pencil" color={COLORS.lightGreen}/>}
+      />
+      </View>
+  );
+  };
+
 
   function ProjectView() {
     const goTo = useTabNavigation();
@@ -140,8 +167,7 @@ function InventoryView() {
       }}>
         {/* <Title>TODO</Title>
         <Paragraph>TODO</Paragraph> */}
-        <Title></Title>
-        <Paragraph></Paragraph>
+        {ProjectViewList()}
         <Button
         onPress={() => goTo(0)}
         textColor= {COLORS.secondary}
@@ -149,6 +175,86 @@ function InventoryView() {
       </View>
     );
 }
+
+const ProjectViewList = () => {
+  const [expanded, setExpanded] = React.useState(true);
+
+  const handlePress = () => setExpanded(!expanded);
+
+  return (
+    <List.AccordionGroup>
+    <List.Accordion 
+    title="Project 1" 
+    id="1" 
+    rippleColor={COLORS.lightGreen}
+    titleStyle={{...FONTS.h3, color: COLORS.primary}}
+    description={`Start Date: 2023-10-01\nDescription: ?\nCustomer List: c1`}
+    descriptionNumberOfLines={4}
+    descriptionStyle={{...FONTS.body4Light, color: COLORS.primary}}
+    style={{backgroundColor: COLORS.white}}
+    theme={{
+      colors: {
+        primary: COLORS.secondary, 
+        underlineColor: 'transparent',
+        onSurface: COLORS.primary,
+        onSurfaceVariant: COLORS.primary,
+      },
+    }} 
+    left={props => <List.Icon {...props} icon="folder" color={COLORS.primary} />
+    }
+    >
+      <List.Item 
+        title="Item 1"
+        titleStyle={{...FONTS.body3Medium, color: COLORS.primary,marginLeft: '15%',}}
+        description={`Quantity: 2\nPrice: 5\nInfo: info`}
+        descriptionNumberOfLines={4}
+        descriptionStyle={{...FONTS.body4Light, color: COLORS.primary,marginLeft: '20%',}}
+        style={{backgroundColor: COLORS.white}}
+        right={props => <List.Icon icon="pencil" color={COLORS.lightGreen} />}
+      />
+      <List.Item 
+        title="Item 2" 
+        titleStyle={{...FONTS.body3Medium, color: COLORS.primary,marginLeft: '15%',}}
+        description={`Quantity: 2\nPrice: 5\nInfo: info`}
+        descriptionNumberOfLines={4}
+        descriptionStyle={{...FONTS.body4Light, color: COLORS.primary,marginLeft: '20%',}}
+        style={{backgroundColor: COLORS.white}}
+        right={props => <List.Icon icon="pencil" color={COLORS.lightGreen} />}
+      />
+    </List.Accordion>
+    <List.Accordion 
+    title="Project 2" 
+    id="2" 
+    description= "description"
+    rippleColor={COLORS.lightGreen}
+    titleStyle={{...FONTS.h3, color: COLORS.primary}}
+    descriptionStyle={{...FONTS.body4Light, color: COLORS.primary}}
+    style={{backgroundColor: COLORS.white}}
+    theme={{
+      colors: {
+        primary: COLORS.secondary, 
+        underlineColor: 'transparent',
+        onSurface: COLORS.primary,
+        onSurfaceVariant: COLORS.primary,
+      },
+    }} 
+    left={props => <List.Icon {...props} icon="folder" color={COLORS.primary} />
+    }
+    >
+      <List.Item 
+        title="Item 1" 
+        titleStyle={{...FONTS.body3Medium, color: COLORS.primary,marginLeft: '15%',}}
+        description={`Start Date: 2023-10-01\nDescription: ?\nCustomer List: c1`}
+        descriptionNumberOfLines={4}
+        descriptionStyle={{...FONTS.body4Light, color: COLORS.primary,marginLeft: '20%',}}
+        style={{backgroundColor: COLORS.white}}
+        right={props => <List.Icon icon="pencil" color={COLORS.lightGreen}/>}
+      />
+    </List.Accordion>
+  </List.AccordionGroup>
+  );
+  };
+
 
 
 return (
