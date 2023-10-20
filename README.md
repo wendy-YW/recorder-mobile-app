@@ -39,27 +39,15 @@ Developing a mobile application to record worked hours and materials for a speci
 version: 0.1.1
 
 #### Fixed issues:
-- Data fetch and upload with cloud databases
-
-#### Update feats:
-- Inventory Page:
-  -  update items&projects page&views
-
-#### Engaged members:
-- @wendy_YW
-
-## 18/10 2023 Update
-
-version: 0.1.0
-
-#### Fixed issues:
+- Homepage:
+  - Data fetch and upload with cloud databases
 - Report Page:
   - can't scroll in scroll view
   - dropdownpicker display overlapped with description
 
-#### New feats:
+#### Update feats:
 - Inventory Page:
-  - add items&projects page&views
+  -  update items&projects page&views
 
 #### Engaged members:
 - @wendy_YW
