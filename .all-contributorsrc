@@ -1,0 +1,27 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitType": "docs",
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "ahvenainen",
+      "name": "ahvenainen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/121426005?v=4",
+      "profile": "https://github.com/ahvenainen",
+      "contributions": [
+        "code",
+        "ideas"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": true,
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "projectName": "recorder-mobile-app",
+  "projectOwner": "wendy-YW"
+}
