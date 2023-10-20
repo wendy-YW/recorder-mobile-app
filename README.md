@@ -16,7 +16,7 @@ Developing a mobile application to record worked hours and materials for a speci
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ahvenainen"><img src="https://avatars.githubusercontent.com/u/121426005?v=4?s=100" width="100px;" alt="ahvenainen"/><br /><sub><b>ahvenainen</b></sub></a><br /><a href="https://github.com/wendy-YW/recorder-mobile-app/commits?author=ahvenainen" title="Code">💻</a> <a href="#ideas-ahvenainen" title="Ideas, Planning, & Feedback">🤔</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Jayden121102"><img src="https://avatars.githubusercontent.com/u/137092085?v=4?s=100" width="100px;" alt="Jayden121102"/><br /><sub><b>Jayden121102</b></sub></a><br /><a href="https://github.com/wendy-YW/recorder-mobile-app/commits?author=Jayden121102" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/wendy-YW"><img src="https://avatars.githubusercontent.com/u/93748904?v=4?s=100" width="120px;" alt="Wendy"/><br /><sub><b>Wendy</b></sub></a><br /><a href="https://github.com/wendy-YW/recorder-mobile-app/commits?author=wendy-YW" title="Code">💻</a> <a href="#design-wendy-YW" title="Design">🎨</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/wendy-YW"><img src="https://avatars.githubusercontent.com/u/93748904?v=4?s=100" width="150px;" alt="Wendy"/><br /><sub><b>Wendy</b></sub></a><br /><a href="https://github.com/wendy-YW/recorder-mobile-app/commits?author=wendy-YW" title="Code">💻</a> <a href="#design-wendy-YW" title="Design">🎨</a></td>
     </tr>
   </tbody>
   <tfoot>
