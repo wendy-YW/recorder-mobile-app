@@ -1,7 +1,5 @@
 # recorder-mobile-app
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
+
 Developing a mobile application to record worked hours and materials for a specific project. The aim is to build a useful application for real-life needs in a campus environment, which may also be used outside of the campus in the future.
 
 
