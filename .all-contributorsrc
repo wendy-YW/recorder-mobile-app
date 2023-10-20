@@ -1,4 +1,25 @@
 {
   "projectName": "recorder-mobile-app",
-  "projectOwner": "wendy-YW"
+  "projectOwner": "wendy-YW",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "wendy-YW",
+      "name": "Wendy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/93748904?v=4",
+      "profile": "https://github.com/wendy-YW",
+      "contributions": [
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "linkToUsage": true
 }
