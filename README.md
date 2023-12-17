@@ -1,13 +1,28 @@
-# recorder-mobile-app
+# Recorder-mobile-app
 
-Developing a mobile application to record worked hours and materials for a specific project in LAB summer internship. The aim is to build a useful application for real-life needs in a campus environment, which may also be used outside of the campus in the future.
+Developing a mobile application to record or track worked hours and materials for a specific project in LAB summer internship. The aim is to build a useful application for real-life needs in a campus environment, which may also be used outside of the campus in the future.
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 ![GitHub package.json version (subfolder of monorepo)](https://img.shields.io/github/package-json/v/wendy-YW/recorder-mobile-app)
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END --> 
 
-## Contributors
+# Design  
+
+<a href="https://www.figma.com/community/file/1318250061291619129/recorder-mobile-app">
+<img width="530" alt="figma design" src="https://github.com/wendy-YW/recorder-mobile-app/assets/93748904/aed56b7e-4a96-4edb-8dfc-a846124e1b10" >
+</a>
+
+# Preview & Demo
+
+
+https://github.com/wendy-YW/recorder-mobile-app/assets/93748904/394dcb32-3ccd-483f-a9e5-114e1c1ec2ad
+
+
+
+
+  
+# Contributors
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -33,7 +48,7 @@ Developing a mobile application to record worked hours and materials for a speci
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
-
+  
 ## 20/10 2023 Update
 
 version: 0.1.1
