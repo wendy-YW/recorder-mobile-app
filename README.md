@@ -7,7 +7,10 @@ Developing a mobile application to record or track worked hours and materials fo
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END --> 
 
-# Design  
+# Request & Design  
+Client's request   
+<img width="405" alt="figma design" src="https://github.com/wendy-YW/recorder-mobile-app/assets/93748904/2ba650de-7f85-4d65-b982-a1843a8be492" >
+
 [Figma Link](https://www.figma.com/community/file/1318250061291619129/recorder-mobile-app)  
 <a href="https://www.figma.com/community/file/1318250061291619129/recorder-mobile-app">
 <img width="405" alt="figma design" src="https://github.com/wendy-YW/recorder-mobile-app/assets/93748904/aed56b7e-4a96-4edb-8dfc-a846124e1b10" >
